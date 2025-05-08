@@ -1,3 +1,4 @@
+// ***bg***
 let lastScrollY = window.scrollY;
 let angle = 135;
 let isScrolling = false;
@@ -19,6 +20,7 @@ window.addEventListener('scroll', () => {
   }
 });
 
+// ***Hamburger button***
 const toggleBtn = document.getElementById('menuToggle');
 const navMenu = document.getElementById('navMenu');
 
@@ -26,6 +28,8 @@ toggleBtn.addEventListener('click', () => {
   navMenu.classList.toggle('show');
 });
 
+
+// ***Back to Top***
 const backToTopBtn = document.getElementById('backToTopBtn');
 
 window.addEventListener('scroll', () => {
@@ -36,19 +40,25 @@ backToTopBtn.addEventListener('click', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
+
+// ***project animation***
 document.addEventListener("DOMContentLoaded", () => {
   const observer = new IntersectionObserver(
     entries => {
       entries.forEach(entry => {
+        const el = entry.target;
         if (entry.isIntersecting) {
-          entry.target.classList.add("animate");
+          // Force reflow to restart the animation
+          el.classList.remove("animate");
+          void el.offsetWidth; // 💡 Triggers reflow
+          el.classList.add("animate");
         } else {
-          entry.target.classList.remove("animate"); // reverse on scroll out
+          el.classList.remove("animate");
         }
       });
     },
     {
-      threshold: 0.3, // Trigger when 30% of the element is visible
+      threshold: 0.6,
     }
   );
 

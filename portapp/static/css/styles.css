@@ -251,3 +251,23 @@ body {
     opacity: 1;
   }
 }
+/* *****mid****** */
+.github-icon svg {
+  display: inline-block;
+  width: 32px;
+  height: 32px;
+  fill: currentColor; /* Ensures it inherits text color */
+}
+
+.github-icon {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: transform 0.2s ease;
+}
+
+.github-icon:hover {
+  transform: scale(1.1);
+  color: #4078c0; /* GitHub blue */
+}

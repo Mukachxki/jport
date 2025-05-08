@@ -10,6 +10,7 @@
 html {
   scroll-behavior: smooth;
 }
+/* -------- navigations -------- */
 /* -------- Top Left ---------- */
 .top-left-logo {
   font-size: 28px;
@@ -49,7 +50,7 @@ html {
 }
 
 .project-heading h1 {
-  font-size: 12rem !important; /* force the size */
+  font-size: 12rem !important; 
   text-align: center;
   margin: 0;
   line-height: 1;
@@ -102,6 +103,7 @@ a:hover {
 
 
 /* ---------------- Navigation ---------------- */
+/* Initially the nav is visible */
 .nav-buttons {
   position: fixed;
   top: 0;
@@ -113,13 +115,17 @@ a:hover {
   background: rgba(0, 0, 0, 0.7);
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.5);
   z-index: 1000;
+  transition: transform 0.3s ease-in-out;  /* For smooth animation */
 }
-.nav-buttons {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem;
-  position: relative;
+
+/* When the nav is hidden, move it upwards */
+.nav-buttons.hidden {
+  transform: translateY(-100%);
+}
+
+/* For the nav to appear when scrolled up */
+.nav-buttons.visible {
+  transform: translateY(0);
 }
 
 .menu-toggle {
@@ -159,7 +165,7 @@ a:hover {
 
 /* ---------------- Header ---------------- */
 .header {
-  padding: 120px 20px 60px;
+  padding: 170px 20px 60px;
   text-align: center;
   color: #ffffff;
 }
@@ -171,8 +177,9 @@ a:hover {
 
 .header p {
   max-width: 800px;
-  margin: 20px auto 0;
+  margin: 20px auto 14rem;
   font-size: 1.2rem;
+
 }
 
 /* ---------------- Sections ---------------- */
@@ -402,11 +409,11 @@ ul {
 /* Enter Animation */
 .tracking-in-expand {
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 1s ease; /* Slower opacity transition */
 }
 
 .tracking-in-expand.animate {
-  animation: tracking-in-expand 0.7s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+  animation: tracking-in-expand 1.5s cubic-bezier(0.215, 0.610, 0.355, 1.000) both; 
   opacity: 1;
 }
 

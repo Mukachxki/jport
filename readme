@@ -1,12 +1,21 @@
+Folder structure:
+
 jport/                         ← Your main project folder
-├── db.sqlite3                 ← Your database file
-├── manage.py                  ← Django management script
+├── db.sqlite3                 
+├── manage.py                   
+├── .gitignore    
+├── .env   
+└── venv/  
+└── readme
+
+
 ├── jport/                     ← Django project settings module
 │   ├── __init__.py
 │   ├── asgi.py
 │   ├── settings.py
 │   ├── urls.py
 │   └── wsgi.py
+
 └── portapp/                   ← Your app
     ├── __init__.py
     ├── admin.py
@@ -19,17 +28,36 @@ jport/                         ← Your main project folder
     ├── views.py
     └── templates/
         └── portapp/
-            └── home.html      ← ✅ Your homepage template
+            ├── home.html      ← Your homepage template
             └── about.html 
-    └──static/        
-        └── css/
-            └── about.css
-            └── styles.css
+    └── static/
+        ├── css/
+        │   ├── about.css
+        │   └── styles.css
         └── js/
-            └── about.js
+            ├── about.js
             └── scripts.js
-└── venv/ 
- ├── .gitignore
+
+├── backport/  
+│   ├── node_modules/               ← Dependencies folder
+│   ├── public/                     ← Public files (static assets)
+│   ├── src/                        
+    │   ├── app/             
+            ├── favicon.ico             ← Favicon
+            ├── globals.css             ← Global CSS styles
+            ├── layout.js               ← Layout JavaScript
+            └── page.js                 ← Page-level JavaScript
+│   ├── .gitignore                      ← Git ignore file
+│   ├── eslint.config.mjs               ← ESLint configuration
+│   ├── jsconfig.json                   ← JavaScript configuration
+│   ├── next.config.js                  ← Next.js configuration
+│   ├── package-lock.json               ← Package lock file
+│   ├── package.json                    ← Project metadata and dependencies
+│   ├── postcss.config.js               ← PostCSS configuration
+│   └── README.md                       ← Project documentation
+
+
+
 
 
 GOAL:
@@ -179,5 +207,11 @@ https://animista.net/
 https://www.me.toinfinite.dev/#selected-projects
 
 
-add venv
-""
+
+
+##CMDs
+(venv)
+.\venv\Scripts\activate
+python manage.py runserver
+
+npm run dev
