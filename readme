@@ -38,25 +38,30 @@ jport/                         ← Your main project folder
             ├── about.js
             └── scripts.js
 
-├── backport/  
-│   ├── node_modules/               ← Dependencies folder
-│   ├── public/                     ← Public files (static assets)
-│   ├── src/                        
-    │   ├── app/             
-            ├── favicon.ico             ← Favicon
-            ├── globals.css             ← Global CSS styles
-            ├── layout.js               ← Layout JavaScript
-            └── page.js                 ← Page-level JavaScript
-│   ├── .gitignore                      ← Git ignore file
-│   ├── eslint.config.mjs               ← ESLint configuration
-│   ├── jsconfig.json                   ← JavaScript configuration
-│   ├── next.config.js                  ← Next.js configuration
-│   ├── package-lock.json               ← Package lock file
-│   ├── package.json                    ← Project metadata and dependencies
-│   ├── postcss.config.js               ← PostCSS configuration
-│   └── README.md                       ← Project documentation
-
-
+backport/
+│── .next/                 # Compiled output directory (auto-generated)
+│── node_modules/          # Dependencies
+│── public/                # Static assets (images, fonts, etc.)
+│── src/                   # Main source code
+│   │── app/               # Application-specific files
+│   │   ├── layout.js      # Global layout
+│   │   ├── page.js        # Main page
+│   │── about/             # About page components and styles
+│   │   ├── about.css      # Styles for About page
+│   │── components/        # Reusable UI components
+│   │── home/              # Home page components
+│   │── scripts/           # Utility scripts
+│   │   ├── scripts.js     # Main scripts file
+│   │── styles/            # Global and component-specific styles
+│   │   ├── globals.css    # Global CSS file
+│── .gitignore             # Git ignore file
+│── eslint.config.mjs      # ESLint configuration
+│── jsconfig.json          # JavaScript config file
+│── next.config.mjs        # Next.js configuration
+│── package-lock.json      # Lock file for dependencies
+│── package.json           # Dependencies and scripts
+│── postcss.config.js      # PostCSS configuration
+│── README.md              # Documentation
 
 
 

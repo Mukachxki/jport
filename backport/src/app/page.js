@@ -1,42 +1,81 @@
-"use client";
-import { useEffect, useState } from "react";
+"use client"; 
+import React, { useEffect, useState } from 'react';
+import { useRouter } from 'next/navigation';
+import '@/app/public/styles/styles.css';
 
-export default function Home() {
-  const [data, setData] = useState(null);
+const HomePage = () => {
+  const [typedWord, setTypedWord] = useState('');
+  const words = ['Student', 'Coder', 'Weeboo', 'Otaku', 'Gamer'];
+  const [wordIndex, setWordIndex] = useState(0);
 
-  // Fetch data from your Django backend
+  const router = useRouter();
+
+  // Typewriter Effect Logic
   useEffect(() => {
-    fetch("http://localhost:8000/api/data/")
-      .then((res) => res.json())
-      .then((data) => setData(data));
+    let i = 0;
+    let deleting = false;
+    let typingSpeed = 150;
+    let deleteSpeed = 75;
+
+    const typeInterval = setInterval(() => {
+      if (!deleting) {
+        if (i <= words[wordIndex].length) {
+          setTypedWord(words[wordIndex].slice(0, i) + "|"); // Adds cursor at the end
+          i++;
+        } else {
+          deleting = true;
+          setTimeout(() => {
+            typingSpeed = deleteSpeed; // Speeds up deletion animation
+          }, 1500);
+        }
+      } else {
+        if (i >= 0) {
+          setTypedWord(words[wordIndex].slice(0, i) + "|");
+          i--;
+        } else {
+          deleting = false;
+          typingSpeed = 150;
+          setWordIndex((prev) => (prev + 1) % words.length);
+          i = 0;
+        }
+      }
+    }, typingSpeed);
+
+    return () => clearInterval(typeInterval);
+  }, [wordIndex]);
+
+  // Disable scrolling
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = "auto"; // Restore scrolling when unmounting
+    };
   }, []);
 
-  return (
-    <div>
-      <h1>Aaron's Portfolio</h1>
-      
-      {/* Display Portfolio Projects */}
-      <div>
-        <h2>My Projects</h2>
-        {data?.portfolio?.map((project, idx) => (
-          <div key={idx} style={{ marginBottom: "20px", padding: "10px", border: "1px solid #ddd", borderRadius: "8px" }}>
-            <h3>{project.title}</h3>
-            <a href={project.url} target="_blank" style={{ color: "blue", textDecoration: "underline" }}>
-              View Project
-            </a>
-          </div>
-        ))}
-      </div>
+  // Handle button click to navigate to "about" page
+  const handleClick = (e) => {
+    e.preventDefault();
+    router.push('/about');  // Next.js way of routing
+  };
 
-      {/* Optionally display other data */}
-      <div>
-        <h2>Skills</h2>
-        <ul>
-          {data?.skills?.map((skill, idx) => (
-            <li key={idx}>{skill}</li>
-          ))}
-        </ul>
+  return (
+    <div className="intro-wrapper">
+      <div className="content">
+        <h1 className="header">Hello, I'm Aaron</h1>
+        <p>I build cool stuff with code and coffee ☕💻</p>
+
+        <div className="word-container">
+          <h1 className="label">
+            I'm a <span className="cursor">{typedWord}</span>
+          </h1>
+        </div>
+
+        <a href="#" id="startButton" className="animated-button" onClick={handleClick}>
+          <span className="text">Start</span>
+        </a>
       </div>
     </div>
   );
-}
+};
+
+export default HomePage;

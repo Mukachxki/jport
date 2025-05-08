@@ -1,0 +1,274 @@
+/* Headder */
+.Headder {
+    font-family: 'Segoe UI', sans-serif;
+    font-weight: 700;
+    text-align: center;
+    color: #074892;
+    margin-top: 60px;
+    margin-bottom: 20px;
+    transition: font-size 0.3s ease;
+  }
+  
+  /* Default for large screens */
+  .Headder {
+    font-size: 48px;
+  }
+  
+  /* Medium screens (tablets) */
+  @media (max-width: 992px) {
+    .Headder {
+      font-size: 36px;
+    }
+  }
+  
+  /* Small screens (phones) */
+  @media (max-width: 600px) {
+    .Headder {
+      font-size: 28px;
+    }
+  }
+  
+  
+  /* Cool infinite background scrolling animation.
+   * Twitter: @kootoopas
+   */
+  /* Exo thin font from Google. */
+  @import url(https://fonts.googleapis.com/css?family=Exo:100);
+  /* Background data (Original source: https://subtlepatterns.com/grid-me/) */
+  /* Animations */
+  @-webkit-keyframes bg-scrolling-reverse {
+    100% {
+      background-position: 50px 50px;
+    }
+  }
+  @-moz-keyframes bg-scrolling-reverse {
+    100% {
+      background-position: 50px 50px;
+    }
+  }
+  @-o-keyframes bg-scrolling-reverse {
+    100% {
+      background-position: 50px 50px;
+    }
+  }
+  @keyframes bg-scrolling-reverse {
+    100% {
+      background-position: 50px 50px;
+    }
+  }
+  @-webkit-keyframes bg-scrolling {
+    0% {
+      background-position: 50px 50px;
+    }
+  }
+  @-moz-keyframes bg-scrolling {
+    0% {
+      background-position: 50px 50px;
+    }
+  }
+  @-o-keyframes bg-scrolling {
+    0% {
+      background-position: 50px 50px;
+    }
+  }
+  @keyframes bg-scrolling {
+    0% {
+      background-position: 50px 50px;
+    }
+  }
+  /* Main styles */
+  body {
+    margin-top: 13.5rem;
+    color: #999;
+    font: 400 16px/1.5 exo, ubuntu, "segoe ui", helvetica, arial, sans-serif;
+    text-align: center;
+  
+    /* Use new background image with animation */
+    background: url("https://www.toptal.com/designers/subtlepatterns/uploads/double-bubble-dark.png") repeat;
+    background-size: 50px 50px; /* adjust based on your preference */
+  
+    -webkit-animation: bg-scrolling-reverse 0.92s infinite;
+    -moz-animation: bg-scrolling-reverse 0.92s infinite;
+    -o-animation: bg-scrolling-reverse 0.92s infinite;
+    animation: bg-scrolling-reverse 0.92s infinite;
+  
+    -webkit-animation-timing-function: linear;
+    -moz-animation-timing-function: linear;
+    -o-animation-timing-function: linear;
+    animation-timing-function: linear;
+  }
+  
+  
+  /* animated wallpaper end */
+  /* animated button start */
+  .animated-button {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    gap: 8px;
+    padding: 12px 24px;
+    border: 4px solid;
+    border-color: transparent;
+    font-size: 16px;
+    background-color: inherit;
+    border-radius: 100px;
+    font-weight: 600;
+    color: rgb(0, 141, 146);
+    box-shadow: 0 0 0 2px rgb(0, 99, 145);
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+    margin: 0 auto; 
+    display: inline-flex; 
+  }
+  
+  .animated-button svg {
+    position: absolute;
+    width: 24px;
+    fill: rgb(0, 101, 148);
+    z-index: 9;
+    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  
+  .animated-button .arr-1 {
+    right: 16px;
+  }
+  
+  .animated-button .arr-2 {
+    left: -25%;
+  }
+  
+  .animated-button .circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 20px;
+    height: 20px;
+    background-color: rgb(4, 134, 143);
+    border-radius: 50%;
+    opacity: 0;
+    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  
+  .animated-button .text {
+    position: relative;
+    z-index: 1;
+    transform: translateX(-12px);
+    transition: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  
+  .animated-button:hover {
+    box-shadow: 0 0 0 12px transparent;
+    color: #212121;
+    border-radius: 12px;
+  }
+  
+  .animated-button:hover .arr-1 {
+    right: -25%;
+  }
+  
+  .animated-button:hover .arr-2 {
+    left: 16px;
+  }
+  
+  .animated-button:hover .text {
+    transform: translateX(12px);
+  }
+  
+  .animated-button:hover svg {
+    fill: #212121;
+  }
+  
+  .animated-button:active {
+    scale: 0.95;
+    box-shadow: 0 0 0 4px rgb(0, 113, 158);
+  }
+  
+  .animated-button:hover .circle {
+    width: 220px;
+    height: 220px;
+    opacity: 1;
+  }
+  
+  /* anime button end */
+  
+  /* Iam */
+  /* Google Fonts */
+  @import url(https://fonts.googleapis.com/css?family=Anonymous+Pro);
+  
+  /* Cursor container */
+  .cursor {
+    font-size: 30px;
+    font-family: 'Anonymous Pro', monospace;
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline-block;
+    vertical-align: bottom;
+    color: white;
+  }
+  
+  #typewriter-text::after {
+    content: '|';
+    animation: blink 0.7s infinite;
+  }
+  
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+  
+  
+  /*------- Animation Class -------*/
+  .scale-in-center {
+    -webkit-animation: scale-in-center .8s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+            animation: scale-in-center 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  }
+  
+  /* Keyframes */
+  @-webkit-keyframes scale-in-center {
+    0% {
+      -webkit-transform: scale(0);
+              transform: scale(0);
+      opacity: 1;
+    }
+    100% {
+      -webkit-transform: scale(1);
+              transform: scale(1);
+      opacity: 1;
+    }
+  }
+  @keyframes scale-in-center {
+    0% {
+      -webkit-transform: scale(0);
+              transform: scale(0);
+      opacity: 1;
+    }
+    100% {
+      -webkit-transform: scale(1);
+              transform: scale(1);
+      opacity: 1;
+    }
+  }
+  /* *****mid****** */
+  .github-icon svg {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    fill: currentColor; /* Ensures it inherits text color */
+  }
+  
+  .github-icon {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    transition: transform 0.2s ease;
+  }
+  
+  .github-icon:hover {
+    transform: scale(1.1);
+    color: #4078c0; /* GitHub blue */
+  }
+  
