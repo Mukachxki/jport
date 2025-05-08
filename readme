@@ -1,0 +1,183 @@
+jport/                         ← Your main project folder
+├── db.sqlite3                 ← Your database file
+├── manage.py                  ← Django management script
+├── jport/                     ← Django project settings module
+│   ├── __init__.py
+│   ├── asgi.py
+│   ├── settings.py
+│   ├── urls.py
+│   └── wsgi.py
+└── portapp/                   ← Your app
+    ├── __init__.py
+    ├── admin.py
+    ├── apps.py
+    ├── migrations/
+    │   └── __init__.py
+    ├── models.py
+    ├── tests.py
+    ├── urls.py
+    ├── views.py
+    └── templates/
+        └── portapp/
+            └── home.html      ← ✅ Your homepage template
+            └── about.html 
+    └──static/        
+        └── css/
+            └── about.css
+            └── styles.css
+        └── js/
+            └── about.js
+            └── scripts.js
+└── venv/ 
+ ├── .gitignore
+
+
+GOAL:
+
+🌟 Essential Sections
+1. Homepage (Landing Page)
+A clean intro with your name, profession/title, and a short tagline (e.g., "Aspiring Software Engineer | Django Developer | Tech Enthusiast").
+
+A call-to-action (e.g., “View My Work” or “Contact Me”).
+
+2. About Me
+Brief biography: who you are, your background, interests, and goals.
+
+Optionally, a photo of yourself.
+
+Downloadable resume (PDF) button.
+
+3. Projects / Portfolio
+Each project should have:
+
+Title
+
+Description (tech used, what it does, your role)
+
+Images/Screenshots
+
+Live Demo Link (if hosted)
+
+GitHub Repo Link
+
+Use Django models to dynamically add/update projects from the admin panel.
+
+4. Skills
+Categorized: Languages (Python, JS...), Frameworks (Django, React...), Tools (Git, Docker...), etc.
+
+Visuals: skill bars, icons, or badges.
+
+5. Contact Page
+Contact form (use Djangos forms).
+
+Social links (LinkedIn, GitHub, etc.).
+
+Optionally integrate email sending using Django (e.g., via SMTP or a service like SendGrid).
+
+🧠 Optional but Impressive Sections
+6. Blog
+Write posts about coding, tutorials, or personal experiences.
+
+Built using Django models for posts and categories.
+
+7. Testimonials
+Quotes from professors, mentors, or colleagues.
+
+Store them in the database via Django models.
+
+8. Achievements / Certifications
+Include online courses, hackathons, or contests.
+
+Badges or certificates linked to source (Coursera, etc.).
+
+9. Interactive Resume
+A visual/animated version of your resume using JS/CSS.
+
+10. Admin Interface (Only for You)
+Django admin panel to manage projects, blog posts, testimonials, etc.
+
+Bonus if you customize the admin interface.
+
+💡 Technical Tips
+Use Django Templates for rendering.
+
+Use Bootstrap or Tailwind CSS for styling.
+
+Deploy it with Render, Vercel (for frontend), or PythonAnywhere / Heroku.
+
+Consider a PostgreSQL or SQLite database.
+
+
+
+
+
+🔧 Visual Tools & Libraries
+1. Font Awesome (already using)
+Great for icons. Continue using it!
+
+2. Google Fonts
+Explore stylish and modern fonts. fonts.google.com
+
+Example: Poppins, Roboto, or Playfair Display.
+
+3. Animate.css
+Easy-to-use animation library (fadeIn, bounce, slideIn).
+
+Add animations by just applying a class.
+👉 https://animate.style
+
+html
+Copy
+Edit
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+<p class="animate__animated animate__fadeIn">Hello</p>
+4. AOS (Animate on Scroll)
+Animate elements as they appear in the viewport.
+
+Very elegant for portfolios.
+👉 https://michalsnik.github.io/aos
+
+html
+Copy
+Edit
+<link href="https://unpkg.com/aos@next/dist/aos.css" rel="stylesheet">
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>AOS.init();</script>
+Then just add:
+
+html
+Copy
+Edit
+<div data-aos="fade-up">My content</div>
+5. CSS Gradient Tool
+For beautiful backgrounds: https://cssgradient.io
+
+🛠 Code Tools
+6. Figma (UI design)
+Helps you plan layout and visuals before coding.
+
+Free & collaborative: https://figma.com
+
+7. Color Hunt / Coolors
+For choosing color palettes that match.
+👉 https://colorhunt.co
+👉 https://coolors.co
+
+🧰 Optional but Helpful
+8. Tailwind CSS
+Utility-first CSS. Very customizable and clean, but requires learning a new syntax.
+
+Great if youre doing bigger projects in the future.
+
+9. ScrollReveal.js
+Animate elements from different directions on scroll.
+👉 https://scrollrevealjs.org
+
+
+special mentions:
+https://animista.net/
+https://www.me.toinfinite.dev/#selected-projects
+
+
+add venv
+""

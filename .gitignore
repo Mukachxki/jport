@@ -1,0 +1,26 @@
+# Ignore virtual environments
+venv/
+
+# Python bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# SQLite database
+db.sqlite3
+
+# VS Code settings (optional)
+.vscode/
+
+# Environment variables
+.env
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Migrations (optional, but usually included)
+# portapp/migrations/
+
+# Static files collected (if using collectstatic)
+staticfiles/

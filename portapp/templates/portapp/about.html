@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>About</title>
+  {% load static %}
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css/about.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- Navigation -->
+<nav class="nav-buttons" id="navButtons">
+  <a href="{% url 'home' %}" class="top-left-logo">AARON</a>
+  
+  <!-- Hamburger Button -->
+  <button class="menu-toggle" id="menuToggle">
+    <i class="fas fa-bars"></i>
+  </button>
+  
+  <!-- Collapsible Menu -->
+  <div class="nav-links" id="navMenu">
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+  </div>
+</nav>
+
+  <!-- Header -->
+  <header class="header text-center" id="home">
+    <h1>Sup! I'm Aaron</h1>
+    <p>
+      Computer Engineering student exploring web development and software projects. I enjoy learning by building—this portfolio tracks what I’ve made (and broken) so far.
+    </p>
+  </header>
+
+  <!-- About Section -->
+  <section class="section container" id="about">
+    <h2>About Me</h2>
+    <div class="card">
+      <h4>
+        I’m a Computer Engineering student passionate about real-world problem solving through code.<br>
+        I focus on tools like React, Firebase, and Python, and I’m currently undergoing on-the-job training.<br>
+        Outside coding, I love reading manga and playing games.
+      </h4>
+    </div>
+  </section>
+
+  <!-- Education & Skills Section -->
+  <section class="section container">
+    <h2>Education & Skills</h2>
+    <div class="card-container">
+      
+      <!-- Education Card -->
+      <div class="card">
+        <p class="subheading">College</p>
+        <p>2020–2026<br>PHINMA University of Pangasinan<br>BSCpE</p>
+        <p class="subheading">Senior High School (With Honors)</p>
+        <p>2017–2019<br>PHINMA University of Pangasinan</p>
+        <p class="subheading">Junior High School</p>
+        <p>2013–2017<br>BINMALEY CATHOLIC SCHOOL</p>
+      </div>
+
+      <!-- Skills Card -->
+      <div class="card">
+        <ul class="skill-list">
+          <li>HTML, CSS, JavaScript</li>
+          <li>React.js & Firebase</li>
+          <li>Python (Basics)</li>
+          <li>Version Control (Git)</li>
+          <li>Team Collaboration & Debugging</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+  <div class="tracking-in-expand project-heading">
+    <h1>PROJECTS</h1>
+  </div>
+
+  <!-- Projects Section -->
+  <section class="section container" id="projects">
+    <div class="card-container">
+      
+      <div class="card">
+        <p class="subheading">Q-CEA (Queuing Management System)</p>
+        <p><em>April 2025</em></p>
+        <ul>
+          <li>A digital queuing system developed for PHINMA-UPang’s College of Engineering & Architecture.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <p class="subheading">Adjustable Light-Sensitive Alarm</p>
+        <p><em>February 2024</em></p>
+        <ul>
+          <li>Built a light-sensitive alarm with real-time monitoring using embedded systems techniques.</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <p class="subheading">Tic Tac Toe (Hardware Version)</p>
+        <p><em>November 2023</em></p>
+        <ul>
+          <li>Created a physical Tic Tac Toe game using 555 timers and decade counters.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="section container">
+    <h2>Contact</h2>
+    <div class="card contact-card icon-only-contacts">
+      <a href="https://www.facebook.com/aaron.039" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+      <a href="https://instagram.com/Mukachxki" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      <a href="https://github.com/Mukachxki" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+    </div>
+  </section>
+
+  <!-- Back to Top -->
+  <button id="backToTopBtn" class="btn" title="Go to top">↑</button>
+
+  <script src="{% static 'js/about.js' %}"></script>
+</body>
+</html>
