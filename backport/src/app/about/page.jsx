@@ -17,7 +17,7 @@ const AboutPage = () => {
       {
         title: "Smart Environmental Monitoring Comfort and Security System",
         image: "/sem.png",
-        description: "Built a light-sensitive alarm with real-time monitoring using embedded systems techniques."
+        description: "The project effectively meets its focus by providing real-time information monitoring on time, temperature,humidity, and fan levels while ensuring secure access through the PIN-based security system."
       },
       {
         title: "Tic Tac Toe (Hardware Version)",
@@ -97,13 +97,15 @@ const AboutPage = () => {
 
           {/* Hamburger Button */}
           <button
-            className="menu-toggle"
-            id="menuToggle"
-            onClick={() => setMenuOpen(!menuOpen)}
+          className="menu-toggle"
+          id="menuToggle"
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Toggle menu"
           >
-            
+          <i className="fas fa-bars"></i>
           </button>
 
+          
           <div className={`nav-links ${menuOpen ? "show" : ""}`} id="navMenu">
             <a href="#home">Home</a>
             <a href="#projects">Projects</a>
