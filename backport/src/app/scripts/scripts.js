@@ -26,13 +26,15 @@ export function initScripts() {
   });
 
   // Hamburger toggle
-  const toggleBtn = document.getElementById('menuToggle');
-  const navMenu = document.getElementById('navMenu');
-  if (toggleBtn && navMenu) {
+    const toggleBtn = document.getElementById('menuToggle');
+    const navMenu = document.getElementById('navMenu');
+    if (toggleBtn && navMenu) {
     toggleBtn.addEventListener('click', () => {
       navMenu.classList.toggle('show');
     });
-  }
+    } 
+
+
 
   // Back to top
   const backToTopBtn = document.getElementById('backToTopBtn');
@@ -125,13 +127,33 @@ export function initScripts() {
   });
 
   // Smooth scroll for anchors
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener("click", function (e) {
-      e.preventDefault();
-      const targetEl = document.querySelector(this.getAttribute("href"));
-      if (targetEl) {
-        targetEl.scrollIntoView({ behavior: "smooth" });
-      }
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener("click", function (e) {
+        e.preventDefault();
+        const targetEl = document.querySelector(this.getAttribute("href"));
+        if (targetEl) {
+          targetEl.scrollIntoView({ behavior: "smooth" });
+        }
+      });
     });
   });
 }
+// pentagon skill chart
+const skillLevels = [80, 75, 60, 85, 90, 5]; // Percentage for each skill
+
+const centerX = 100; 
+const centerY = 100;
+
+const basePoints = [
+  [100, 20], [180, 75], [150, 175], [50, 175], [20, 75]
+];
+
+// Calculate new points based on skill levels
+const pentagonPoints = basePoints.map(([x, y], i) => {
+  let factor = skillLevels[i] / 100; // Scale based on percentage
+  let newX = centerX + (x - centerX) * factor;
+  let newY = centerY + (y - centerY) * factor;
+  return `${newX},${newY}`;
+}).join(" ");
+
