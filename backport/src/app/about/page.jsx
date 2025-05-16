@@ -2,44 +2,46 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import "@/app/styles/about.css"; // Make sure this file exists and is accessible
 
 const AboutPage = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [skills, setSkills] = useState({});
+  const [projects, setProjects] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
 
-  const projects = [
-      {
-        title: "Q-CEA (Queuing Management System)",
-        image: "/qcea.png",
-        description: "Digital queuing system for PHINMA-UPang’s College of Engineering & Architecture.",
-        stack: ["React", "Firebase", "HTML", "CSS", "JS", "Netlify"],
-      },
-      {
-        title: "Smart Environmental Monitoring Comfort and Security System",
-        image: "/sem.png",
-        description: "The project effectively meets its focus by providing real-time information monitoring on time, temperature,humidity, and fan levels while ensuring secure access through the PIN-based security system.",
-        stack: ["Arduino", "C++", "Sensors", "LCD Display"],
-      },
-      {
-        title: "Tic Tac Toe (Hardware Version)",
-        image: "/tic.png",
-        description: "Created a physical Tic Tac Toe game using 555 timers and decade counters.",
-        stack: ["Arduino", "Logic Gates", "Sensors", "LCD Display"],
-      },
-    ];
+  const goLeft = () =>
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? projects.length - 1 : prevIndex - 1
+    );
 
-    const goLeft = () =>
-      setCurrentIndex((prevIndex) =>
-        prevIndex === 0 ? projects.length - 1 : prevIndex - 1
-      );
-
-    const goRight = () =>
-      setCurrentIndex((prevIndex) =>
-        prevIndex === projects.length - 1 ? 0 : prevIndex + 1
-      );
+  const goRight = () =>
+    setCurrentIndex((prevIndex) =>
+      prevIndex === projects.length - 1 ? 0 : prevIndex + 1
+    );
 
   useEffect(() => {
+    setIsLoading(true);
+    // Fetch skills
+    fetch('http://localhost:8000/api/skills/')
+      .then(response => response.json())
+      .then(data => setSkills(data))
+      .catch(error => console.error('Error fetching skills:', error));
+
+    // Fetch projects
+    fetch('http://localhost:8000/api/projects/')
+      .then(response => response.json())
+      .then(data => {
+        setProjects(data);
+        setIsLoading(false);
+      })
+      .catch(error => {
+        console.error('Error fetching projects:', error);
+        setIsLoading(false);
+      });
+
     const btn = document.getElementById("backToTopBtn");
     const handleScroll = () => {
       if (btn) {
@@ -121,7 +123,7 @@ const AboutPage = () => {
         <p>
           Computer Engineering student exploring web development and software
           projects. I enjoy learning by building—this portfolio tracks what
-          I’ve made (and broken) so far.
+          I've made (and broken) so far.
         </p>
       </header>
 
@@ -129,58 +131,60 @@ const AboutPage = () => {
       <section className="section container">
         <h2>SKILLS</h2>
         <div className="skill-columns">
-          <div className="skill-container frontend">
-            <h3>Frontend</h3>
-            <div className="skill"><p>CSS</p><div className="skill-level advanced">Advanced</div></div>
-            <div className="skill"><p>HTML</p><div className="skill-level intermediate">Intermediate</div></div>
-            <div className="skill"><p>JavaScript</p><div className="skill-level advanced">Advanced</div></div>
-            <div className="skill"><p>Next.js</p><div className="skill-level advanced">Advanced</div></div>
-            <div className="skill"><p>React</p><div className="skill-level advanced">Advanced</div></div>
-          </div>
-
-          <div className="skill-container backend">
-            <h3>Backend</h3>
-            <div className="skill"><p>Firebase</p><div className="skill-level advanced">Advanced</div></div>
-            <div className="skill"><p>NodeJS</p><div className="skill-level intermediate">Intermediate</div></div>
-            <div className="skill"><p>Python</p><div className="skill-level advanced">Advanced</div></div>
-            <div className="skill"><p>REST API Development</p><div className="skill-level advanced">Advanced</div></div>
-          </div>
-
-          <div className="skill-container database">
-            <h3>Database</h3>
-            <div className="skill"><p>MySQL</p><div className="skill-level beginner">Beginner</div></div>
-            <div className="skill"><p>PostgreSQL</p><div className="skill-level intermediate">Intermediate</div></div>
-          </div>
+          {Object.entries(skills).map(([category, categorySkills]) => (
+            <div key={category} className="skill-container">
+              <h3>{category.charAt(0).toUpperCase() + category.slice(1)}</h3>
+              {categorySkills.map((skill, index) => (
+                <div key={index} className="skill">
+                  <p>{skill.name}</p>
+                  <div className={`skill-level ${skill.level.toLowerCase()}`}>
+                    {skill.level}
+                  </div>
+                </div>
+              ))}
+            </div>
+          ))}
         </div>
       </section>
 
       {/* Projects Carousel */}
       <section className="section container" id="projects">
         <h2>PROJECTS</h2>
-        <div className="project-carousel">
-          {/* Desktop arrows */}
-          <button className="arrow left desktop-only" onClick={goLeft}>❮</button>
+        {isLoading ? (
+          <div className="loading">Loading projects...</div>
+        ) : projects.length > 0 ? (
+          <div className="project-carousel">
+            {/* Desktop arrows */}
+            <button className="arrow left desktop-only" onClick={goLeft}>❮</button>
 
-          <div className="project-card">
-            <img
-              src={projects[currentIndex].image}
-              alt={projects[currentIndex].title}
-            />
-            <h3>{projects[currentIndex].title}</h3>
-            <p>{projects[currentIndex].description}</p>
-            <div className="tech-stack"><br/>
-            <h3>Stack:</h3> {projects[currentIndex].stack.join(", ")}
+            <div className="project-card">
+              {projects[currentIndex]?.image && (
+                <div style={{ position: 'relative', width: '100%', height: '300px' }}>
+                  <Image
+                    src={projects[currentIndex].image}
+                    alt={projects[currentIndex].title || 'Project image'}
+                    fill
+                    style={{ objectFit: 'contain' }}
+                  />
+                </div>
+              )}
+              <h3>{projects[currentIndex]?.title || 'Untitled Project'}</h3>
+              <p>{projects[currentIndex]?.description || 'No description available'}</p>
+              <div className="tech-stack"><br/>
+                <h3>Stack:</h3> {projects[currentIndex]?.stack?.join(", ") || 'No stack information available'}
+              </div>
+
+              {/* Mobile arrows inside project-card */}
+              <div className="arrow-container mobile-only">
+                <button className="arrow left" onClick={goLeft}>❮</button>
+                <button className="arrow right" onClick={goRight}>❯</button>
+              </div>
             </div>
-
-
-            {/* Mobile arrows inside project-card */}
-            <div className="arrow-container mobile-only">
-              <button className="arrow left" onClick={goLeft}>❮</button>
-              <button className="arrow right" onClick={goRight}>❯</button>
-            </div>
+            <button className="arrow right desktop-only" onClick={goRight}>❯</button>
           </div>
-          <button className="arrow right desktop-only" onClick={goRight}>❯</button>
-        </div>
+        ) : (
+          <div className="no-projects">No projects available</div>
+        )}
       </section>
 
       {/* Education */}
@@ -204,29 +208,33 @@ const AboutPage = () => {
         <div className="card-container">
           <div className="card">
             <h4>
-              I’m a Computer Engineering student passionate about real-world problem solving through code.<br />
-              I focus on tools like React, Firebase, and Python, and I’m currently undergoing on-the-job training.<br />
+              I'm a Computer Engineering student passionate about real-world problem solving through code.<br />
+              I focus on tools like React, Firebase, and Python, and I'm currently undergoing on-the-job training.<br />
               Outside coding, I love reading manga and playing games.
             </h4>
           </div>
         </div>
       </section>
 
-      {/* Contact */}
-      <section className="section container">
-        <h2>Contact</h2>
-        <div className="card contact-card icon-only-contacts">
-          <a href="https://www.facebook.com/aaron.039" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
-            <i className="fab fa-facebook-f"></i>
-          </a>
-          <a href="https://instagram.com/Mukachxki" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-            <i className="fab fa-instagram"></i>
-          </a>
-          <a href="https://github.com/Mukachxki" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
-            <i className="fab fa-github"></i>
-          </a>
+      {/* Footer */}
+      <footer className="footer">
+        <div className="footer-content">
+          <div className="footer-social">
+            <a href="https://www.facebook.com/aaron.039" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+              <i className="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://instagram.com/Mukachxki" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+              <i className="fab fa-instagram"></i>
+            </a>
+            <a href="https://github.com/Mukachxki" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+              <i className="fab fa-github"></i>
+            </a>
+          </div>
+          <div className="footer-copyright">
+            © {new Date().getFullYear()} Aaron. All rights reserved.
+          </div>
         </div>
-      </section>
+      </footer>
 
       {/* Back to Top Button */}
       <button id="backToTopBtn" className="btn" title="Go to top">↑</button>
