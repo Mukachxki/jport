@@ -270,7 +270,7 @@ ul {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
+  gap: 2rem;
   flex-wrap: wrap;
   flex-direction: row;
 }
@@ -278,7 +278,7 @@ ul {
 .project-card {
   text-align: center;
   padding: 1rem;
-  max-width: 300px;
+  max-width: 90%;
   border: 1px solid #ccc;
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -290,6 +290,9 @@ ul {
   border-radius: 8px;
   margin-bottom: 0.5rem;
 }
+.arrow-container {
+  display: none;
+}
 
 .arrow {
   background: none;
@@ -298,10 +301,18 @@ ul {
   cursor: pointer;
   color: #333;
   transition: color 0.3s;
-}
+} 
 
 .arrow:hover {
   color: #0070f3;
+}
+
+.desktop-only {
+  display: inline-block;
+}
+
+.mobile-only {
+  display: none;
 }
 
 /* ---------------- Animations ---------------- */
@@ -388,20 +399,28 @@ ul {
 }
 
 
-/* MOBILE RESPONSIVE ADJUSTMENT */
-@media (max-width: 600px) {
+/* MOBILE arrows */
+@media (max-width: 768px) {
   .project-carousel {
     flex-direction: column;
   }
 
-  .arrow-buttons {
+  .desktop-only {
+    display: none;
+  }
+
+  .mobile-only {
+    display: block;
+  }
+
+  .arrow-container {
     display: flex;
     justify-content: center;
     gap: 2rem;
     margin-top: 1rem;
   }
 
-  .arrow right {
-    font-size: 2.5rem;
+  .arrow {
+    font-size: 2rem;
   }
 }

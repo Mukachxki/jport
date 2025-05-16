@@ -1,8 +1,9 @@
-# portapp/urls.py
 from django.urls import path
-from . import views
+from .views import skills_api, projects_api, home, about
 
 urlpatterns = [
-    path('', views.home_view, name='home'),         # ✅ use home_view
-    path('about/', views.about_view, name='about'),
+    path('', home, name='home'),
+    path('about/', about, name='about'),
+    path('api/skills/', skills_api),
+    path('api/projects/', projects_api),
 ]

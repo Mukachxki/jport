@@ -12,19 +12,21 @@ const AboutPage = () => {
       {
         title: "Q-CEA (Queuing Management System)",
         image: "/qcea.png",
-        description: "Digital queuing system for PHINMA-UPang’s College of Engineering & Architecture."
+        description: "Digital queuing system for PHINMA-UPang’s College of Engineering & Architecture.",
+        stack: ["React", "Firebase", "HTML", "CSS", "JS", "Netlify"],
       },
       {
         title: "Smart Environmental Monitoring Comfort and Security System",
         image: "/sem.png",
-        description: "The project effectively meets its focus by providing real-time information monitoring on time, temperature,humidity, and fan levels while ensuring secure access through the PIN-based security system."
+        description: "The project effectively meets its focus by providing real-time information monitoring on time, temperature,humidity, and fan levels while ensuring secure access through the PIN-based security system.",
+        stack: ["Arduino", "C++", "Sensors", "LCD Display"],
       },
       {
         title: "Tic Tac Toe (Hardware Version)",
         image: "/tic.png",
-        description: "Created a physical Tic Tac Toe game using 555 timers and decade counters."
+        description: "Created a physical Tic Tac Toe game using 555 timers and decade counters.",
+        stack: ["Arduino", "Logic Gates", "Sensors", "LCD Display"],
       },
-      {},
     ];
 
     const goLeft = () =>
@@ -92,7 +94,7 @@ const AboutPage = () => {
           }, 100);
             }}
           >
-            AARON
+            Hide_.
           </Link>
 
           {/* Hamburger Button */}
@@ -156,9 +158,9 @@ const AboutPage = () => {
       <section className="section container" id="projects">
         <h2>PROJECTS</h2>
         <div className="project-carousel">
-          <button className="arrow left" onClick={goLeft}>
-            ❮
-          </button>
+          {/* Desktop arrows */}
+          <button className="arrow left desktop-only" onClick={goLeft}>❮</button>
+
           <div className="project-card">
             <img
               src={projects[currentIndex].image}
@@ -166,10 +168,18 @@ const AboutPage = () => {
             />
             <h3>{projects[currentIndex].title}</h3>
             <p>{projects[currentIndex].description}</p>
+            <div className="tech-stack"><br/>
+            <h3>Stack:</h3> {projects[currentIndex].stack.join(", ")}
+            </div>
+
+
+            {/* Mobile arrows inside project-card */}
+            <div className="arrow-container mobile-only">
+              <button className="arrow left" onClick={goLeft}>❮</button>
+              <button className="arrow right" onClick={goRight}>❯</button>
+            </div>
           </div>
-          <button className="arrow right" onClick={goRight}>
-            ❯
-          </button>
+          <button className="arrow right desktop-only" onClick={goRight}>❯</button>
         </div>
       </section>
 
