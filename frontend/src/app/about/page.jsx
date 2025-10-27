@@ -25,13 +25,13 @@ const AboutPage = () => {
   useEffect(() => {
     setIsLoading(true);
     // Fetch skills
-    fetch('http://localhost:8000/api/skills/')
+    fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/api/skills/`)
       .then(response => response.json())
       .then(data => setSkills(data))
       .catch(error => console.error('Error fetching skills:', error));
 
     // Fetch projects
-    fetch('http://localhost:8000/api/projects/')
+    fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'}/api/projects/`)
       .then(response => response.json())
       .then(data => {
         setProjects(data);

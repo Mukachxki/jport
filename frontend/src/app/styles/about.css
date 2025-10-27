@@ -271,14 +271,16 @@ ul {
   align-items: center;
   justify-content: center;
   gap: 2rem;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   flex-direction: row;
+  width: 100%;
 }
 
 .project-card {
   text-align: center;
   padding: 1rem;
-  max-width: 90%;
+  width: 95%;
+  max-width: 1200px;
   border: 1px solid #ccc;
   border-radius: 12px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -302,6 +304,14 @@ ul {
   color: #333;
   transition: color 0.3s;
 } 
+
+.project-carousel .arrow.desktop-only {
+  flex: 0 0 auto;
+}
+
+.project-carousel .project-card {
+  flex: 1 1 auto;
+}
 
 .arrow:hover {
   color: #0070f3;
