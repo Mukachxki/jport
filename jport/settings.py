@@ -8,7 +8,7 @@ load_dotenv(BASE_DIR / 'secrets' / '.env')
 # Security and Debug
 SECRET_KEY = os.getenv("SECRET_KEY")
 DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
-ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
+ALLOWED_HOSTS = ['https://web-production-478fb.up.railway.app/', 'localhost', '127.0.0.1']  # Add your Railway domain
 
 # Application definition
 INSTALLED_APPS = [
@@ -35,8 +35,8 @@ MIDDLEWARE = [
 
 # CORS
 CORS_ORIGIN_ALLOW_ALL = False
-CORS_ORIGIN_WHITELIST = [
-    'http://localhost:3000',
+CORS_ALLOWED_ORIGINS = [
+    'https://jport-rho.vercel.app/',  # Replace with your Vercel domain
 ]
 CORS_ALLOW_CREDENTIALS = True
 
