@@ -63,11 +63,11 @@ WSGI_APPLICATION = 'jport.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('DB_NAME', 'railway'),
-        'USER': os.environ.get('DB_USER', 'postgres'),
-        'PASSWORD': os.environ.get('DB_PASSWORD'),  # Use Railway's PGPASSWORD reference
-        'HOST': os.environ.get('DB_HOST'),  # Use Railway's PGHOST reference
-        'PORT': os.environ.get('DB_PORT', '5432'),
+        'NAME': os.environ.get('DB_NAME'),
+        'USER': os.environ.get('DB_USER'),
+        'PASSWORD': os.environ.get('DB_PASSWORD'),
+        'HOST': os.environ.get('DB_HOST'),  # This must be set to Railway's host
+        'PORT': os.environ.get('DB_PORT'),
     }
 }
 
