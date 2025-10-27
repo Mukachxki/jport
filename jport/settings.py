@@ -7,7 +7,7 @@ load_dotenv(BASE_DIR / 'secrets' / '.env')
 
 # Security and Debug
 SECRET_KEY = os.getenv("SECRET_KEY")
-DEBUG = os.getenv("DEBUG") == "True"
+DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
 ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
 
 # Application definition
@@ -63,13 +63,16 @@ WSGI_APPLICATION = 'jport.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.environ.get('DB_NAME'),
-        'USER': os.environ.get('DB_USER'),
-        'PASSWORD': os.environ.get('DB_PASSWORD'),
-        'HOST': os.environ.get('DB_HOST'),  # This must be set to Railway's host
-        'PORT': os.environ.get('DB_PORT'),
+        'NAME': os.environ.get('DB_NAME', 'railway'),
+        'USER': os.environ.get('DB_USER', 'postgres'),
+        'PASSWORD': os.environ.get('DB_PASSWORD'),  # Use Railway's PGPASSWORD reference
+        'HOST': os.environ.get('DB_HOST'),  # Use Railway's PGHOST reference
+        'PORT': os.environ.get('DB_PORT', '5432'),
     }
 }
+# Static files (CSS, JavaScript, Images)
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Password validation
 AUTH_PASSWORD_VALIDATORS = [
