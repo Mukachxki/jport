@@ -36,10 +36,12 @@ MIDDLEWARE = [
 # CORS
 CORS_ORIGIN_ALLOW_ALL = False
 CORS_ALLOWED_ORIGINS = [
-    'https://jport-rho.vercel.app/',  # Replace with your Vercel domain
+    'https://jport-rho.vercel.app',  # Remove trailing slash or any path
 ]
 CORS_ALLOW_CREDENTIALS = True
-
+CSRF_TRUSTED_ORIGINS = [
+    'https://jport-rho.vercel.app',
+]
 ROOT_URLCONF = 'jport.urls'
 
 TEMPLATES = [
